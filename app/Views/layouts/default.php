@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--CSS-->
+    <link rel="stylesheet" href="assets/css/Style.css">
+    <link rel="stylesheet" href="assets/css/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!--css slick-->
+    <link rel="stylesheet" href="<?= request()->baseUrl(); ?>/assets/css/LineIcons.3.0.css" />
+    <link rel="stylesheet" href="<?= request()->baseUrl(); ?>/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/slick-theme.css">
+
+
+    <!-- CSS only -->
+    <title>ShoesStore</title>
+
+    <!-- insert specific page's css -->
+    <?= $this->section('css') ?>
+
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+      <p class="browserupgrade">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="https://browsehappy.com/">upgrade your browser</a> to improve
+        your experience and security.
+      </p>
+    <![endif]-->
+
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header section -->
+
+    <?= $this->insert('layouts/header') ?>
+
+        <!-- Content section -->
+        <?= $this->section('page') ?>
+
+            <!-- Footer section -->
+            <?= $this->insert('layouts/footer') ?>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="assets/js/Main.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="assets/js/slick.js"></script>
+    <script src="assets/js/slick.min.js"></script>
+    <!-----JS---->
+    <script>
+        $('.slick_two').slick({
+            slidesToShow: 3,
+            slidesToScroll: 1,
+            arrows: true,
+            autoplay: true,
+            speed: 2000,
+            autoplaySpeed: 2000,
+            infinite: true,
+            responsive: [
+            {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2
+            }
+            },
+            {
+            breakpoint: 480,
+            settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1
+            }
+            }
+        ]});
+        </script>
+
+    <!-- insert specific page's scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="<?= request()->baseUrl(); ?>/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= request()->baseUrl(); ?>/assets/js/tiny-slider.js"></script>
+    <script src="<?= request()->baseUrl(); ?>/assets/js/glightbox.min.js"></script>
+    <!-- <script src="<?= request()->baseUrl(); ?>/assets/js/sweetalert2.all.min.js"></script> -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="<?= request()->baseUrl(); ?>/assets/js/main.js"></script>
+
+    <!-- Add notification Flash message -->
+    <?= $this->insert('layouts/notifications'); ?>
+    <!-- insert specific page's scripts -->
+    <?php $this->start('js') ?>
+    <?= $this->insert('shoeStore/product-script'); ?>
+    <?= $this->insert('shoeStore/cart-script'); ?>
+    <?php $this->stop(); ?>
+    <?= $this->section('js') ?>
+</body>
+
+</html>
