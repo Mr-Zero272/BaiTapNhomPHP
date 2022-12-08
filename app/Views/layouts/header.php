@@ -21,12 +21,17 @@
             <a href="/cart" class="buy-btn">
                 <i class="bx bxs-cart"></i>
             </a>
-            <a href="#" class="nav__icon">
+            <a href="#" class="nav__icon btn">
                 <i class='bx bxs-user-circle'></i>
             </a>
             <div class="nav__shop-content">
                 <div class="btn-checkout">
-                    <li><i class='bx bxs-log-in-circle'><a href="/login"> LOG IN</a></i></li>
+
+                    <?php if (auth()) : ?>
+                        <li><i class='bx bxs-log-in-circle'><a href="/logout"> LOG OUT</a></i></li>
+                    <?php else : ?>
+                        <li><i class='bx bxs-log-in-circle'><a href="/login"> LOG IN</a></i></li>
+                    <?php endif; ?>
                     <li><i class='bx bxs-sign-up-circle'><a href="/register"> REGISTER</a></i></li>
                 </div>
             </div>

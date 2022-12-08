@@ -164,7 +164,8 @@
                     <h2 class="section-title contact__initial">Contact Us</h2>
                     <p class="contact__description">
                         If you want to buy shoes in our store, contact us and we will immediately serve you with service
-                        24/7</p>
+                        24/7
+                    </p>
                 </div>
                 <div class="contact__button">
                     <a href="Contact.html" class="button">Contact Us Now</a>

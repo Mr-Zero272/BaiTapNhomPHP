@@ -12,8 +12,8 @@
                                 <i class="lni lni-checkmark"></i>
                                 <h2>Your Account created successfully</h2>
                                 <p>Thanks for joining with us, please sign in to your account now.</p>
-                                <div class="button">
-                                    <a href="/login" class="btn">Login</a>
+                                <div class="d-grid">
+                                    <a class="btn btn-primary btn-login text-uppercase fw-bold" type="submit" href="/login">Login</a>
                                 </div>
                             </div>
                         </div>

@@ -8,7 +8,6 @@
             <div class="card bg-whiteborder-0 shadow rounded-3 my-5">
                 <div class="card-body p-4 p-sm-5">
                     <form class="login-form" method="post" action="/login">
-
                         <h3>Login Now</h3>
                         <div class="form-floating mb-3">
                             <input type="username" name="username" value="<?= $params['username'] ?? null ?>" class="form-control <?= isset($errors['username']) ? ' is-invalid' : ''  ?>" id="username" placeholder="Your username" required>
