@@ -8,7 +8,7 @@
         <div class="nav__toggle" id="nav-toggle">
             <i class='bx bx-menu'></i>
         </div>
-        <a href="index.html" class="nav__logo">ShoesStore</a>
+        <a href="/home" class="nav__logo">ShoesStore</a>
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
                 <li class="nav__item"><a href="/home" class="nav__link active-link">Home</a></li>
@@ -26,7 +26,13 @@
             </a>
             <div class="nav__shop-content">
                 <div class="btn-checkout">
-                    <li><i class='bx bxs-log-in-circle'><a href="login.html"> LOG IN</a></i></li>
+
+                    <?php if (auth()) : ?>
+                        <li><i class='bx bxs-log-in-circle'><a href="/logout"> LOG OUT</a></i></li>
+                    <?php else : ?>
+                        <li><i class='bx bxs-log-in-circle'><a href="/login"> LOG IN</a></i></li>
+                    <?php endif; ?>
+                    <li><i class='bx bxs-sign-up-circle'><a href="/register"> REGISTER</a></i></li>
                 </div>
             </div>
         </div>

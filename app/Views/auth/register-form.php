@@ -47,8 +47,8 @@
             </div>
         </div>
     </div>
-    <div class="button">
-        <button class="btn" type="submit">Register</button>
+    <div class="d-grid">
+        <button class="btn btn-primary btn-sign-up text-uppercase fw-bold" type="submit">Register</button>
     </div>
     <p class="outer-link">
         Already have an account? <a href="login.php">Login Now</a>
