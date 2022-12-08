@@ -3,7 +3,38 @@
     <i class='bx bx-chevron-up scrollTop_icon'></i>
 </a>
 <!----Header!---->
-<header>
+<header class="l-header" id="header">
+    <nav class="nav bd-container">
+        <div class="nav__toggle" id="nav-toggle">
+            <i class='bx bx-menu'></i>
+        </div>
+        <a href="/home" class="nav__logo">ShoesStore</a>
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item"><a href="/home" class="nav__link active-link">Home</a></li>
+                <li class="nav__item"><a href="AboutUs.html" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="/product" class="nav__link">Product</a></li>
+                <li class="nav__item"><a href="Contact.html" class="nav__link">Contact</a></li>
+            </ul>
+        </div>
+        <div class="nav_shop">
+            <a href="/cart" class="buy-btn">
+                <i class="bx bxs-cart"></i>
+            </a>
+            <a href="#" class="nav__icon">
+                <i class='bx bxs-user-circle'></i>
+            </a>
+            <div class="nav__shop-content">
+                <div class="btn-checkout">
+                    <li><i class='bx bxs-log-in-circle'><a href="/login"> LOG IN</a></i></li>
+                    <li><i class='bx bxs-sign-up-circle'><a href="/register"> REGISTER</a></i></li>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<!-- <header>
     <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
         <div class="container">
             <a href="/home" class="navbar-brand mb-0 h1">
@@ -39,4 +70,4 @@
             </div>
         </div>
     </nav>
-</header>
+</header> -->

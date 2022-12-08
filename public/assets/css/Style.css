@@ -641,6 +641,36 @@ margin-bottom: var(--mb-3);
   .input-fields textarea{
     height: 212px;
   }
+/* ----cua rieng---- */
+.buy-btn{
+    width: 160px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    background-color: #ffffff;
+    color: #252525;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 20px;
+}
+@keyframes fade{
+    0%{
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 1;
+    }
+}
+
+.buy-btn:hover{
+    color: #ffffff;
+    background-color: #A85CF9;
+    transition: all ease 0.3s;
+}
+
   .btn {
     background: var(--first-color);
     text-align: center;
@@ -860,3 +890,4 @@ margin: 1rem 0;
 .form .input_wrap .input_field{
     position: relative;
 }
+

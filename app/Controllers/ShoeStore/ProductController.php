@@ -5,6 +5,7 @@ namespace App\Controllers\ShoeStore;
 use App\Controllers\BaseController;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Detail;
 use App\Http\Paginator;
 use App\Http\Response;
 
@@ -196,6 +197,18 @@ class ProductController extends BaseController
 
         $return_url = $this->request->post('return_url', '/home'); //f********
         return $this->redirect($return_url); //duoi day thi no chay ?? ak dau van meo chay :))
+    }
+
+    public function showDetailProduct(){
+        //tai sao cai link /product/detail thi ko co css ;?
+        $detailProduct = Detail::with('product')->get();
+
+        return $this->render(
+            'shoeStore/detail',
+            [
+                'products' => $detailProduct,
+            ]
+        );
     }
 
     public function showFormAddProduct()
