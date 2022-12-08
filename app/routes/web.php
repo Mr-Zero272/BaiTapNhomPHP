@@ -32,6 +32,7 @@ Router::post('/cart', 'App\Controllers\ShoeStore\ProductController@updateQuantit
 Router::post('/product/add', 'App\Controllers\ShoeStore\ProductController@addToCart');
 Router::post('/cart/delete', 'App\Controllers\ShoeStore\ProductController@deleteProductFromCart');
 Router::post('/cart/checkout', 'App\Controllers\ShoeStore\ProductController@checkOut');
+Router::get('/product_detail', 'App\Controllers\ShoeStore\ProductController@showDetailProduct');
 //Router::get('/cart', 'App\Controllers\ShoeStore\ProductController@checkOut');
 
 ?>

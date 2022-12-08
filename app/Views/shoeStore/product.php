@@ -13,7 +13,7 @@
             </h3>
             <span class="products__detail">Low Price</span><br>
             <span class="products__price">&#8363 <?= $productKid->price ?></span>
-            <a href="/product/detail" class="button products__button_detail">Product Detail</a>
+            <a href="/product_detail" class="button products__button_detail">Product Detail</a>
             <a href="/product/add?id=<?= $productKid->id ?>" class="button products__button"
             data-id="<?= $productKid->id ?>" 
             title="Add <?= $productKid->name ?>" 
@@ -39,7 +39,7 @@
             </h3>
             <span class="products__detail">Low Price</span><br>
             <span class="products__price">&#8363 <?= $productWoman->price ?></span>
-            <a href="/product/detail" class="button products__button_detail">Product Detail</a>
+            <a href="/product_detail" class="button products__button_detail">Product Detail</a>
             <a href="/product/add?id=<?= $productWoman->id ?>" class="button products__button"
             data-id="<?= $productWoman->id ?>" 
             title="Add <?= $productWoman->name ?>" 
@@ -65,7 +65,7 @@
             </h3>
             <span class="products__detail">Low Price</span><br>
             <span class="products__price">&#8363 <?= $productMan->price ?></span>
-            <a href="/product/detail" class="button products__button_detail">Product Detail</a>
+            <a href="/product_detail" class="button products__button_detail">Product Detail</a>
             <a href="/product/add?id=<?= $productMan->id ?>" class="button products__button"
             data-id="<?= $productMan->id ?>" 
             title="Add <?= $productMan->name ?>" 

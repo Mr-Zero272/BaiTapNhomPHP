@@ -53,7 +53,7 @@
                         href="<?= request()->baseUrl(); ?>/cart/checkout" 
                         data-id="17" data-name="all products by user17"
                         data-return-url="<?= request()->fullUrl(); ?>">
-                        <div class="btn btn-success">Check out</div>
+                        <div class="buy-btn btn btn-success">Check out</div>
                         </a>  
                     </td>
                 </tr>
