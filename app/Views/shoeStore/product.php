@@ -13,7 +13,11 @@
             </h3>
             <span class="products__detail">Low Price</span><br>
             <span class="products__price">&#8363 <?= $productKid->price ?></span>
+<<<<<<< HEAD
             <a href="/product_detail" class="button products__button_detail">Product Detail</a>
+=======
+            <a href="/product_detail?id=<?= $productKid->id ?>" class="button products__button_detail">Product Detail</a>
+>>>>>>> faffd3b8e2175449cba6c9f9a5e35606b1530917
             <a href="/product/add?id=<?= $productKid->id ?>" class="button products__button"
             data-id="<?= $productKid->id ?>" 
             title="Add <?= $productKid->name ?>" 
@@ -39,7 +43,11 @@
             </h3>
             <span class="products__detail">Low Price</span><br>
             <span class="products__price">&#8363 <?= $productWoman->price ?></span>
+<<<<<<< HEAD
             <a href="/product_detail" class="button products__button_detail">Product Detail</a>
+=======
+            <a href="/product_detail?id=<?= $productWoman->id ?>" class="button products__button_detail">Product Detail</a>
+>>>>>>> faffd3b8e2175449cba6c9f9a5e35606b1530917
             <a href="/product/add?id=<?= $productWoman->id ?>" class="button products__button"
             data-id="<?= $productWoman->id ?>" 
             title="Add <?= $productWoman->name ?>" 
@@ -65,7 +73,11 @@
             </h3>
             <span class="products__detail">Low Price</span><br>
             <span class="products__price">&#8363 <?= $productMan->price ?></span>
+<<<<<<< HEAD
             <a href="/product_detail" class="button products__button_detail">Product Detail</a>
+=======
+            <a href="/product_detail?id=<?= $productMan->id ?>" class="button products__button_detail">Product Detail</a>
+>>>>>>> faffd3b8e2175449cba6c9f9a5e35606b1530917
             <a href="/product/add?id=<?= $productMan->id ?>" class="button products__button"
             data-id="<?= $productMan->id ?>" 
             title="Add <?= $productMan->name ?>" 

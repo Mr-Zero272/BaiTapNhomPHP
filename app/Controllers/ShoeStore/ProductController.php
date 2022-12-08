@@ -201,12 +201,14 @@ class ProductController extends BaseController
 
     public function showDetailProduct(){
         //tai sao cai link /product/detail thi ko co css ;?
-        $detailProduct = Detail::with('product')->get();
+        //$detailProduct = Detail::with('product')->where('id', 13)->get();
+        $id = $this->request->get('id');
+        $detailProduct = Detail::with('product')->find($id);
 
         return $this->render(
             'shoeStore/detail',
             [
-                'products' => $detailProduct,
+                'detail' => $detailProduct,
             ]
         );
     }
