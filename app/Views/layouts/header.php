@@ -18,10 +18,10 @@
             </ul>
         </div>
         <div class="nav_shop">
-            <a href="/cart" class="buy-btn">
+            <a href="/cart" class="btn btn-outline-dark">
                 <i class="bx bxs-cart"></i>
             </a>
-            <a href="#" class="nav__icon">
+            <a href="#" class="nav__icon btn btn-outline-dark">
                 <i class='bx bxs-user-circle'></i>
             </a>
             <div class="nav__shop-content">

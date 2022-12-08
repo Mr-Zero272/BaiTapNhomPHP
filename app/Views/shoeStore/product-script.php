@@ -14,6 +14,21 @@
         })
     });
 
+    $(document).ready(function () {
+
+        // Khi nhấn vào nút delete bất kỳ trên danh sách
+        $(document).on('click', '.add_from_detail', function (event) {
+            // stop chuyen link khi nhấn vào thẻ <a>
+            event.preventDefault();
+            // hiển thị Sweetaler2 và xoá bằng ajax 
+            // hoặc uncomment showModalConfirm() để xoá theo kiểu bình thường
+            showConfirmAdd(event.currentTarget);
+
+            // hoặc sử dụng Bootstrap Modal
+            //showModalConfirm(event.currentTarget); // lấy phần tử <a> vừa được click
+        })
+    });
+
     // hàm hiển thị thông báo SweetAlert xác nhận xoá
     function showConfirmAdd(e) {
         Swal.fire({
@@ -81,5 +96,10 @@
                 'error'
             )
         });
+    }
+
+    function myFunction(imgitem) {
+        var fullImg = document.getElementById("main-img");
+        fullImg.src = imgitem.src;
     }
 </script>
