@@ -12,29 +12,30 @@
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
                 <li class="nav__item"><a href="/home" class="nav__link active-link">Home</a></li>
-                <li class="nav__item"><a href="AboutUs.html" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="/about" class="nav__link">About</a></li>
                 <li class="nav__item"><a href="/product" class="nav__link">Product</a></li>
                 <li class="nav__item"><a href="Contact.html" class="nav__link">Contact</a></li>
             </ul>
         </div>
-        <div class="nav_shop">
-            <a href="/cart" class="btn btn-outline-dark">
+        <div class="nav_login">
+            <?php if (auth()): ?>
+                <span>Hello <?= auth()->username ?></span>
+            <?php endif; ?>
+            <a href="/cart" class="btn btn-outline-dark cart">
                 <i class="bx bxs-cart"></i>
             </a>
-            <a href="#" class="nav__icon btn btn-outline-dark">
-                <i class='bx bxs-user-circle'></i>
+            <?php if (auth()): ?>
+            <a href="/logout" class="btn btn-outline-dark log_out">
+                <i class="fas fa-sign-out-alt"></i>
             </a>
-            <div class="nav__shop-content">
-                <div class="btn-checkout">
-
-                    <?php if (auth()) : ?>
-                        <li><i class='bx bxs-log-in-circle'><a href="/logout"> LOG OUT</a></i></li>
-                    <?php else : ?>
-                        <li><i class='bx bxs-log-in-circle'><a href="/login"> LOG IN</a></i></li>
-                    <?php endif; ?>
-                    <li><i class='bx bxs-sign-up-circle'><a href="/register"> REGISTER</a></i></li>
-                </div>
-            </div>
+            <?php else: ?>
+            <a href="/login" class="btn btn-outline-dark log_in">
+                <i class="fas fa-user-circle"></i>
+            </a>
+            <?php endif; ?>
+            <a href="/register" class="btn btn-outline-dark log_out">
+                <i class="fas fa-user-plus"></i>
+            </a>
         </div>
     </nav>
 </header>

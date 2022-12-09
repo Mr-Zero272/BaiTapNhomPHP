@@ -6,7 +6,7 @@
     <div class="card mb-3" style="max-width: 940px;">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="https://i.pinimg.com/564x/57/6c/fe/576cfe89b5f516bf19a0e232d0cc8650.jpg" id="main-img"
+                <img src="<?= $detail->link_image_1 ?>" id="main-img"
                     class="card-img" alt="...">
             </div>
             <div class="col-md-8">
@@ -21,21 +21,20 @@
                         <span>4.8</span>
                     </div>
                     <p class="card-text">
-                        Old price: <span style="text-decoration: line-through"> <?= $detail->product->price + $detail->product->price * 0.5 ?></span>
-                        New price: <?= $detail->product->price ?>
+                        Old price: <span class="old_price" style="text-decoration: line-through"> <?= $detail->product->price + $detail->product->price * 0.5 ?></span>
+                        New price: <span class="new_price"><?= $detail->product->price ?></span> 
                     </p>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional content. This content is a little bit longer. Lorem ipsum dolor sit amet consectetur
-                        adipisicing elit. Odio, dolorem nobis? Repellat, in. Sunt suscipit, velit, alias omnis, corrupti
-                        eaque modi dolorem blanditiis impedit neque vero quaerat eum dolor hic. Lorem ipsum dolor sit,
-                        amet consectetur adipisicing elit. Assumenda sed, eaque ea asperiores, voluptas dolore quia
-                        accusantium ab impedit, quasi minus cumque delectus neque illum iure modi saepe qui minima.</p>
-                    <p class="card-text"><small class="text-muted">You can adjust the quantity in the cart</small></p>
+                    <p class="card-text">Stay on your feet, so that you can take on today's quick 2-miler and bounce back in time for a 
+                        longer run tomorrow. A wider forefoot and higher foam stacks add super-soft cushioning, giving you the peace of 
+                        mind to pound the pavement every day. The springy responsiveness adds an element of speed to our most tested shoe 
+                        to help you go faster and farther. It's a radiant, empowering twist on a running essential, inspired by our human 
+                        pacers who inspire through connection.</p>
+                    <p class="card-text"><small class="text-muted">You can adjust the quantity in the cart.</small></p>
                     <a href="/product/add?id=<?= $detail->id ?>" class="btn btn-outline-primary add_from_detail"
                     data-id="<?= $detail->id ?>" 
                     title="Add <?= $detail->product->name ?>" 
                     data-name="<?= $detail->product->name ?>" 
-                    data-return-url="<?= request()->fullUrl(); ?>">Add to cart<i class="fas fa-cart-arrow-down"></i></a>
+                    data-return-url="<?= request()->fullUrl(); ?>">Add to cart <i class="fas fa-cart-arrow-down"></i></a>
                 </div>
             </div>
         </div>

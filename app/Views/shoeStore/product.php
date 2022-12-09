@@ -3,7 +3,7 @@
 <section class="product section bd-container" id="products">
     <span class="section-subtitle"></span>
     <h2 class="section-title">KIDS SHOES</h2>
-    <a href="Sepatu Anak.html"><button class="button" style="color: white;">See All</button></a>
+    <a href="/seeAllProduct?kind=kid"><button class="button" style="color: white;">See All</button></a>
     <div class="products__container bd-grid slick_two" id="ward-list">
         <?php foreach ($productsKid as $productKid): ?>
         <div class="products__content">
@@ -29,7 +29,7 @@
 <section class="product section bd-container" id="products">
     <span class="section-subtitle"></span>
     <h2 class="section-title">WOMAN SHOES</h2>
-    <a href="Sepatu Wanita.html"><button class="button" style="color: white;">See All</button></a>
+    <a href="/seeAllProduct?kind=woman"><button class="button" style="color: white;">See All</button></a>
     <div class="products__container bd-grid slick_two">
         <?php foreach ($productsWoman as $productWoman): ?>
         <div class="products__content">
@@ -55,7 +55,7 @@
 <section class="product section bd-container" id="products">
     <span class="section-subtitle"></span>
     <h2 class="section-title">MEN SHOES</h2>
-    <a href="Sepatu Laki.html"><button class="button" style="color: white;">See All</button></a>
+    <a href="/seeAllProduct?kind=man"><button class="button" style="color: white;">See All</button></a>
     <div class="products__container bd-grid slick_two">
         <?php foreach ($productsMan as $productMan): ?>
         <div class="products__content">

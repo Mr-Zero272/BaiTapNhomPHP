@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Detail;
+use App\Models\User;
 use App\Http\Paginator;
 use App\Http\Response;
 
@@ -21,106 +22,89 @@ class ProductController extends BaseController
     }
 
     public function showCart(){
-
-        $productsInCart = Cart::with('product')->get();
-
-        return $this->render(
-            'shoeStore/cart',
-            [
-                'products' => $productsInCart,
-            ]
-        );
+        if (auth())
+        {
+            $productsInCart = Cart::with('product')->get();
+    
+            return $this->render(
+                'shoeStore/cart',
+                [
+                    'products' => $productsInCart,
+                ]
+            );
+        } else {
+            session()->setFlash(\FLASH::ERROR, 'You need to log in');
+            return $this->redirect('/login');
+        }
 
     }
 
     public function addToCart(){
-        $id = $this->request->post('id');
-        $product = Product::find($id);
-        // $data = [
-        //     'id' => $product->id,
-        //     'id_product'=> $product->id,
-        //     'id_user'=> '17',
-        //     'quantity' => 1,
-        //     'created_at' => '2022-05-11 08:36:57',
-        //     'updated_at' => null,
-        //     'deleted_at' => null
-        // ];
-
-        // $cart = new Cart();
-        // $cart->fill($data);
-
-        // if ($this->request->ajax()) {
-        //     if ($product) {
-        //         if ($cart->save()) {
-        //             return $this->json([
-        //                 'message' => $product->name . 'has been added successfully!'
-        //             ], Response::HTTP_OK);
-        //         } else {
-        //             return $this->json([
-        //                 'message' => 'Unable to add product to cart!'
-        //             ], Response::HTTP_BAD_REQUEST);
-        //         }
-        //     }
-        //     return $this->json([
-        //         'message' => 'Product ID does not exists!'
-        //     ], Response::HTTP_NOT_FOUND);
-        // }
-
-        $exits = Cart::find($product->id);
-        if($exits)
+        if (auth())
         {
-            $exits->quantity += 1;
-            if ($this->request->ajax()) {
-                if ($product) {
-                    if ($exits->save()) {
-                        return $this->json([
-                            'message' => $product->name . 'has been added successfully!'
-                        ], Response::HTTP_OK);
-                    } else {
-                        return $this->json([
-                            'message' => 'Unable to add product to cart!'
-                        ], Response::HTTP_BAD_REQUEST);
+            $id = $this->request->post('id');
+            $product = Product::find($id);
+            $exist = Cart::find($product->id);
+            if($exist)
+            {
+                $exist->quantity += 1;
+                if ($this->request->ajax()) {
+                    if ($product) {
+                        if ($exist->save()) {
+                            return $this->json([
+                                'message' => $product->name . 'has been added successfully!'
+                            ], Response::HTTP_OK);
+                        } else {
+                            return $this->json([
+                                'message' => 'Unable to add product to cart!'
+                            ], Response::HTTP_BAD_REQUEST);
+                        }
                     }
+                    return $this->json([
+                        'message' => 'Product ID does not exists!'
+                    ], Response::HTTP_NOT_FOUND);
                 }
-                return $this->json([
-                    'message' => 'Product ID does not exists!'
-                ], Response::HTTP_NOT_FOUND);
-            }
-        } else if(!$exits) { //duma else ko chiu
-            $data = [
-                'id' => $product->id,
-                'id_product'=> $product->id,
-                'id_user'=> '17',
-                'quantity' => 1,
-                'created_at' => '2022-05-11 08:36:57',
-                'updated_at' => null,
-                'deleted_at' => null
-            ];
-
-            $cart = new Cart();
-            $cart->fill($data);
+            } else if(!$exist) {
+                $data = [
+                    'id' => $product->id,
+                    'id_product'=> $product->id,
+                    'id_user'=> auth()->id,
+                    'quantity' => 1,
+                    'created_at' => '2022-05-11 08:36:57',
+                    'updated_at' => null,
+                    'deleted_at' => null
+                ];
     
-            if ($this->request->ajax()) {
-                if ($product) {
-                    if ($cart->save()) {
-                        return $this->json([
-                            'message' => $product->name . 'has been added successfully!'
-                        ], Response::HTTP_OK);
-                    } else {
-                        return $this->json([
-                            'message' => 'Unable to add product to cart!'
-                        ], Response::HTTP_BAD_REQUEST);
+                $cart = new Cart();
+                $cart->fill($data);
+        
+                if ($this->request->ajax()) {
+                    if ($product) {
+                        if ($cart->save()) {
+                            return $this->json([
+                                'message' => $product->name . 'has been added successfully!'
+                            ], Response::HTTP_OK);
+                        } else {
+                            return $this->json([
+                                'message' => 'Unable to add product to cart!'
+                            ], Response::HTTP_BAD_REQUEST);
+                        }
                     }
+                    return $this->json([
+                        'message' => 'Product ID does not exists!'
+                    ], Response::HTTP_NOT_FOUND);
                 }
-                return $this->json([
-                    'message' => 'Product ID does not exists!'
-                ], Response::HTTP_NOT_FOUND);
             }
+    
+    
+            $return_url = $this->request->post('return_url', '/home');
+            return $this->redirect($return_url);
+        } else {
+            return $this->json([
+                'message' => 'You need to log in before shopping!'
+            ], Response::HTTP_BAD_REQUEST);
         }
-
-
-        $return_url = $this->request->post('return_url', '/home');
-        return $this->redirect($return_url);
+        
     }
 
     public function deleteProductFromCart(){
@@ -149,8 +133,8 @@ class ProductController extends BaseController
             ], Response::HTTP_NOT_FOUND);
         }
 
-        $return_url = $this->request->post('return_url', '/home'); //de z chu meo co tac dung
-        return $this->redirect($return_url); //de z chu meo co tac dung
+        $return_url = $this->request->post('return_url', '/home');
+        return $this->redirect($return_url);
     }
 
     public function updateQuantity()
@@ -176,13 +160,14 @@ class ProductController extends BaseController
     public function checkOut(){
         $id_user = $this->request->post('id');
         $checkout = Cart::Where('id_user', $id_user);
+        $user = User::find($id_user);
         if ($this->request->ajax())
         {
             if ($checkout)
             {
                 if ($checkout->delete()) {
                     return $this->json([
-                        'message' => 'Thank you for shopping at my store'
+                        'message' => 'Thank ' . $user->username . ' for shopping in our shop.'
                     ], Response::HTTP_OK);
                 } else {
                     return $this->json([
@@ -195,8 +180,8 @@ class ProductController extends BaseController
             ], Response::HTTP_NOT_FOUND);
         }
 
-        $return_url = $this->request->post('return_url', '/home'); //f********
-        return $this->redirect($return_url); //duoi day thi no chay ?? ak dau van meo chay :))
+        $return_url = $this->request->post('return_url', '/home'); 
+        return $this->redirect($return_url);
     }
 
     public function showDetailProduct(){
@@ -211,6 +196,12 @@ class ProductController extends BaseController
                 'detail' => $detailProduct,
             ]
         );
+    }
+
+    public function showAllProduct(){
+        $kind = $this->request->get('kind');
+        $products = Product::Where('kind', $kind)->get();
+        return $this->render('shoeStore/all-product-' . $kind, ['products' => $products]);
     }
 
     public function showFormAddProduct()

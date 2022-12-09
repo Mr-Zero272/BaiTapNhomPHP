@@ -20,7 +20,7 @@
                     <th scope="row"><?= $start++; ?></th>
                     <td><?= $product->id_product; ?></td>
                     <td><?= $product->product->name; ?></td>   
-                    <td><?= $product->product->price; ?></td>  
+                    <td>&#8363 <?= $product->product->price; ?></td>  
                     <td> 
                         <form action="/cart" method="POST">
                             <input type="hidden" name="update_quantity_id" value="<?= $product->id_product ?>">
@@ -46,14 +46,15 @@
                     <th><?= $start?></th>
                     <td scope="row"><a href="/product" class="btn btn-warning">Continue shopping</a></td>
                     <td colspan="4">
-                        Total: <?= $total; ?>
+                        Total: &#8363 <?= $total; ?>
                     </td>
+                    <div hidden> <?= $id_user = auth()->id ?></div>
                     <td style="text-align: center;">
-                        <a class="checkout delete" 
+                        <a class="checkout delete buy-btn btn btn-success" 
                         href="<?= request()->baseUrl(); ?>/cart/checkout" 
-                        data-id="17" data-name="all products by user17"
+                        data-id="<?= $id_user ?>"
                         data-return-url="<?= request()->fullUrl(); ?>">
-                        <div class="buy-btn btn btn-success">Check out</div>
+                        Check out
                         </a>  
                     </td>
                 </tr>

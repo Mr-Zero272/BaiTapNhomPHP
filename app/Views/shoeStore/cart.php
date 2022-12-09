@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h3>List of Wards and Communes</h3>
+                <h3>List of products</h3>
             </div>
         </div>
         <div class="row">

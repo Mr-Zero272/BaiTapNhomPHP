@@ -78,11 +78,27 @@
             event.preventDefault();
             // hiển thị Sweetaler2 và xoá bằng ajax 
             // hoặc uncomment showModalConfirm() để xoá theo kiểu bình thường
-            showConfirm(event.currentTarget);
+            showConfirmCheckout(event.currentTarget);
 
             // hoặc sử dụng Bootstrap Modal
             //showModalConfirm(event.currentTarget); // lấy phần tử <a> vừa được click
         })
     });
+
+    function showConfirmCheckout(e) {
+        Swal.fire({
+            title: 'Are you sure?',
+            html: "<p>Check out all products in the cart!</p> <p>You won't be able to revert this!</p>",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#3085d6',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Confirm'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                ajaxDelete(e);
+            }
+        });
+    }
 
 </script>

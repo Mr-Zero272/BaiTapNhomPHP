@@ -22,8 +22,8 @@
         <div class="footer__content">
             <h3 class="footer__title">Adress</h3>
             <ul>
-                <li>Jl. Doang Jadian Kagak KM 12.8</li>
-                <li>Bogor 16913 - Indonesia</li>
+                <li>No. 12727, 3/2 street</li>
+                <li>CanTho 94000 - VietNam</li>
                 <li>Phone : +62812xxxxx</li>
                 <li>Whatsapp : 08211xxxxx</li>
             </ul>
