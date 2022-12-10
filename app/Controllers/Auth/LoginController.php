@@ -3,6 +3,7 @@
 namespace App\Controllers\Auth;
 
 use App\Controllers\BaseController;
+use App\Controllers\ShoeStore\ProductController;
 use App\Traits\UserAuthenticateTrait;
 
 class LoginController extends BaseController
@@ -43,7 +44,7 @@ class LoginController extends BaseController
                 // cookie hết hạn 01/12/2021 23:59:59
                 setcookie('credentials', $encrypted, mktime(23, 59, 59, 12, 1, 2021));
             }
-
+            ProductController::setQuantityForCart();
             session()->setFlash(\FLASH::SUCCESS, 'Login successfully!');
             //redirect('/home');
             $this->redirect('/home');

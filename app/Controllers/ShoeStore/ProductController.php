@@ -9,6 +9,7 @@ use App\Models\Detail;
 use App\Models\User;
 use App\Http\Paginator;
 use App\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends BaseController
 {
@@ -23,7 +24,7 @@ class ProductController extends BaseController
 
     public static function setQuantityForCart()
     {
-        $total = Cart::all();
+        $total = Cart::Where('id_user', auth()->id)->get();
         $number = 0;
         foreach($total as $product)
         {
@@ -35,7 +36,7 @@ class ProductController extends BaseController
     public function showCart(){
         if (auth())
         {
-            $productsInCart = Cart::with('product')->get();
+            $productsInCart = Cart::with('product')->where('id_user', auth()->id)->get();
             // $number = 0;
             // foreach($productsInCart as $product)
             // {
