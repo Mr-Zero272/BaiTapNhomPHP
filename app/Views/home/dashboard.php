@@ -2,7 +2,7 @@
     <!----Home---->
     <section class="home" id="home" style="background-color: #ABD9FF;">
         <div class="slideshow-container">
-            <div class="mySlides fade">
+            <div class="mySlides">
                 <div class="home__container bd-container bd-grid">
                     <div class="home__data">
                         <h1 class="home__title">KIDS PITR SHOES</h1>
@@ -12,7 +12,7 @@
                 </div>
             </div>
 
-            <div class="mySlides fade">
+            <div class="mySlides">
                 <div class="home__container bd-container bd-grid">
                     <div class="home__data">
                         <h1 class="home__title">FF POWER ENERGY</h1>
@@ -22,7 +22,7 @@
                 </div>
             </div>
 
-            <div class="mySlides fade">
+            <div class="mySlides">
                 <div class="home__container bd-container bd-grid">
                     <div class="home__data">
                         <h1 class="home__title">LEYLA SHOES</h1>
@@ -54,7 +54,7 @@
                     e-commerce website, it can help market their products using internet media so that they can bring in
                     many customers and customers around the world can see and buy products without having to come
                     directly to the store.</p>
-                <a href="AboutUs.html" class="button">Explore history</a>
+                <a href="/about" class="button">Explore history</a>
             </div>
             <img src="assets/images/aboutus.jpg" alt="" class="about__img">
         </div>

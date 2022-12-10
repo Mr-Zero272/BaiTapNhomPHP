@@ -98,8 +98,48 @@
             confirmButtonText: 'Confirm'
         }).then((result) => {
             if (result.isConfirmed) {
-                ajaxDelete(e);
+                ajaxCheckout(e);
             }
+        });
+    }
+
+    function ajaxCheckout(e) {
+        var url = $(e).prop('href');
+        var id = $(e).data('id');
+        $.ajax({
+            method: "POST",
+            url: url,
+            data: {
+                id: id
+            }
+        }).done(function (response) { // nếu xoá thành công
+
+            // delete dòng vừa xoá trên trang hoặc có thể
+            // load lại danh sách theo cách bên dưới
+            //$(e).closest('tr').remove();
+
+            // Gọi hàm reloadWardList để load lại danh sách trên form
+            let reload_url = $(e).data('return-url');
+            // thẻ <div> chứa danh sách ward
+            //$("#quantity_cart").load(location.reload_url + " #quantity_cart");
+            let target = $('#cart-list');
+            //$("#cart-list").load(location.reload_url + " #cart-list");
+            //reloadWardList(reload_url, target);
+            Swal.fire(
+                'Thank you!',
+                response.message,
+                'success'
+            ).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload();
+                }
+            });
+        }).fail(function (response) { // nếu thất bại
+            Swal.fire(
+                'Error',
+                response.responseJSON.message,
+                'error'
+            )
         });
     }
 

@@ -85,7 +85,7 @@ class ProductController extends BaseController
                 }
             } else if(!$exist) {
                 $data = [
-                    'id' => $product->id,
+                    'id' => $product->id + (100 * auth()->id),
                     'id_product'=> $product->id,
                     'id_user'=> auth()->id,
                     'quantity' => 1,
