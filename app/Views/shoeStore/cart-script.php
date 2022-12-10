@@ -52,6 +52,7 @@
             // thẻ <div> chứa danh sách ward
             //$("#quantity_cart").load(location.reload_url + " #quantity_cart");
             let target = $('#cart-list');
+            //$("#cart-list").load(location.reload_url + " #cart-list");
             //reloadWardList(reload_url, target);
             Swal.fire(
                 'Deleted!',
