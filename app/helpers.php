@@ -116,6 +116,21 @@ if (!function_exists('auth')) {
     }
 }
 
+if (!function_exists('cart'))
+{
+        /**
+     * Trả về User model nếu đã login
+     *
+     * @return \App\Models\User|mixed
+     */
+    function cart(){
+        $cartSerialized = session()->get('quantity');
+        $cart = $cartSerialized  ? unserialize($cartSerialized) : null;
+
+        return $cart;
+    }
+}
+
 if (!function_exists('session')) {
     /**
      * Trả về symfony session object

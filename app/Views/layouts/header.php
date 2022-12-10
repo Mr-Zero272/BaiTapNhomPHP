@@ -14,7 +14,7 @@
                 <li class="nav__item"><a href="/home" class="nav__link active-link">Home</a></li>
                 <li class="nav__item"><a href="/about" class="nav__link">About</a></li>
                 <li class="nav__item"><a href="/product" class="nav__link">Product</a></li>
-                <li class="nav__item"><a href="Contact.html" class="nav__link">Contact</a></li>
+                <li class="nav__item"><a href="/contact" class="nav__link">Contact</a></li>
             </ul>
         </div>
         <div class="nav_login">
@@ -23,6 +23,13 @@
             <?php endif; ?>
             <a href="/cart" class="btn btn-outline-dark cart">
                 <i class="bx bxs-cart"></i>
+                <span class="quantity_cart" id="quantity_cart">
+                    <?php if (auth()) :?>
+                    <span><?= cart() ?></span>
+                    <?php else:?>
+                    <span>0</span>
+                    <?php endif; ?>
+                </span>
             </a>
             <?php if (auth()): ?>
             <a href="/logout" class="btn btn-outline-dark log_out">
@@ -33,7 +40,7 @@
                 <i class="fas fa-user-circle"></i>
             </a>
             <?php endif; ?>
-            <a href="/register" class="btn btn-outline-dark log_out">
+            <a href="/register" class="btn btn-outline-dark register">
                 <i class="fas fa-user-plus"></i>
             </a>
         </div>

@@ -2,7 +2,7 @@
 
 <!-- Load nội dung trang home/dashboard.php vào vị trí section('page') của layouts/default.php -->
 <?php $this->start('page') ?>
-<?php $this->insert('home/dashboard'); ?>
+<?php $this->insert('home/dashboard', ['products' => $products]); ?>
 <?php $this->stop() ?>
 
 <!-- Chèn script vào vị trí section("js") trong layout default -->

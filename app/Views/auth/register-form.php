@@ -48,9 +48,9 @@
         </div>
     </div>
     <div class="d-grid">
-        <button class="btn btn-primary btn-sign-up text-uppercase fw-bold" type="submit">Register</button>
+        <button class="button text-uppercase fw-bold" type="submit">Register</button>
     </div>
     <p class="outer-link">
-        Already have an account? <a href="login.php">Login Now</a>
+        Already have an account? <a href="/login">Login Now</a>
     </p>
 </form>

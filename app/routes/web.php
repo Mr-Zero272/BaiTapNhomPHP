@@ -25,6 +25,7 @@ Router::error("\App\Controllers\ErrorController@notFoundError");
 
 //Shoe store
 Router::get('/product', 'App\Controllers\ShoeStore\ProductController@showProducts');
+
 Router::get('/cart', 'App\Controllers\ShoeStore\ProductController@showCart');
 Router::post('/cart', 'App\Controllers\ShoeStore\ProductController@updateQuantity');
 
@@ -35,6 +36,9 @@ Router::get('/product_detail', 'App\Controllers\ShoeStore\ProductController@show
 //Router::get('/cart', 'App\Controllers\ShoeStore\ProductController@checkOut');
 Router::get('/seeAllProduct', 'App\Controllers\ShoeStore\ProductController@showAllProduct');
 
-Router::get('/about','App\Controllers\ShoeStore\AboutController@showAbout' )
+Router::get('/about','App\Controllers\ShoeStore\AboutController@showAbout');
+//Contact
+Router::get('/contact','App\Controllers\ShoeStore\ContactController@showContact');
+Router::post('/contact','App\Controllers\ShoeStore\ContactController@contact');
 ?>
 

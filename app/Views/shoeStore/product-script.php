@@ -8,7 +8,7 @@
             // hiển thị Sweetaler2 và xoá bằng ajax 
             // hoặc uncomment showModalConfirm() để xoá theo kiểu bình thường
             showConfirmAdd(event.currentTarget);
-
+            a++;
             // hoặc sử dụng Bootstrap Modal
             //showModalConfirm(event.currentTarget); // lấy phần tử <a> vừa được click
         })
@@ -65,14 +65,14 @@
             // Gọi hàm reloadWardList để load lại danh sách trên form
             let reload_url = $(e).data('return-url');
             // thẻ <div> chứa danh sách ward
-            let target = $('#ward-list');
+            let target = $('#quantity_cart');
+            $("#quantity_cart").load(location.reload_url + " #quantity_cart");
             reloadWardListAdd(reload_url, target);
             Swal.fire(
                 'Added!',
                 response.message,
                 'success'
             );
-
         }).fail(function (response) { // nếu thất bại
             Swal.fire(
                 'Error',
@@ -102,4 +102,36 @@
         var fullImg = document.getElementById("main-img");
         fullImg.src = imgitem.src;
     }
+
+    $(document).ready(function () {
+
+        // Khi nhấn vào nút delete bất kỳ trên danh sách
+        $(document).on('click', '.log_out', function (event) {
+            // stop chuyen link khi nhấn vào thẻ <a>
+            event.preventDefault();
+            // hiển thị Sweetaler2 và xoá bằng ajax 
+            // hoặc uncomment showModalConfirm() để xoá theo kiểu bình thường
+            showConfirmLogin(event.currentTarget);
+
+            // hoặc sử dụng Bootstrap Modal
+            //showModalConfirm(event.currentTarget); // lấy phần tử <a> vừa được click
+        })
+    });
+
+    function showConfirmLogin(e) {
+        Swal.fire({
+            title: 'Log out?',
+            html: "<p>Are you sure?</p> <p>You won't be able to revert this!</p>",
+            icon: 'warning',
+            showCancelButton: true,
+            cancelButtonColor: '#3085d6',
+            confirmButtonColor: '#d33',
+            confirmButtonText: 'Confirm'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "http://mvc.local/logout";
+            }
+        });
+    }
+
 </script>
