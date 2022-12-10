@@ -79,7 +79,7 @@
                 <!-- Card-->
                 <div class="card shadow-sm border-0 rounded">
                     <div class="card-body p-0"><img
-                            src="https://bootstrapious.com/i/snippets/sn-cards/profile-1_dewapk.jpg" alt=""
+                            src="assets/images/thuc.jpg" alt=""
                             class="w-100 card-img-top img_info">
                         <div class="p-4">
                             <h5 class="mb-0">Nguyễn Trí Thức</h5>
@@ -102,7 +102,7 @@
                 <!-- Card-->
                 <div class="card shadow-sm border-0 rounded">
                     <div class="card-body p-0"><img
-                            src="https://bootstrapious.com/i/snippets/sn-cards/profile-1_dewapk.jpg" alt=""
+                            src="assets/images/ngan.jpg" alt=""
                             class="w-100 card-img-top img_info">
                         <div class="p-4">
                             <h5 class="mb-0">Lê Thị Hoàng Ngân</h5>
@@ -125,7 +125,7 @@
                 <!-- Card-->
                 <div class="card shadow-sm border-0 rounded">
                     <div class="card-body p-0"><img
-                            src="https://bootstrapious.com/i/snippets/sn-cards/profile-1_dewapk.jpg" alt=""
+                            src="assets/images/trang.jpg" alt=""
                             class="w-100 card-img-top img_info">
                         <div class="p-4">
                             <h5 class="mb-0">Nguyễn Thị Thùy Trang</h5>
@@ -148,7 +148,7 @@
                 <!-- Card-->
                 <div class="card shadow-sm border-0 rounded">
                     <div class="card-body p-0"><img
-                            src="https://bootstrapious.com/i/snippets/sn-cards/profile-1_dewapk.jpg" alt=""
+                            src="assets/images/thanh.jpg" alt=""
                             class="w-100 card-img-top img_info">
                         <div class="p-4">
                             <h5 class="mb-0">Trần Thị Thanh Thanh</h5>

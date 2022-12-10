@@ -20,14 +20,14 @@
             <p>If you want to buy shoes in our store, contact us and we will immediately serve you with service 24/7</p>
         </div>
         <div class="footer__content">
-            <h3 class="footer__title">Adress</h3>
+            <h3 class="footer__title">Address</h3>
             <ul>
-                <li>No. 12727, 3/2 street</li>
+                <li> Campus II, 3/2 street</li>
                 <li>CanTho 94000 - VietNam</li>
-                <li>Phone : +62812xxxxx</li>
-                <li>Whatsapp : 08211xxxxx</li>
+                <li>Phone : +84292xxxxx</li>
+                <li>Fax : +84292xxxxx</li>
             </ul>
         </div>
     </div>
-    <p class="footer__copy">&#169; 2022 Group 4. All right reserved</p>
+    <p class="footer__copy">&#169; 2022 Group 8. All right reserved</p>
 </footer>

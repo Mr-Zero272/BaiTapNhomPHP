@@ -6,10 +6,14 @@
     <div class="container container-fluid p-3 mt-5">
         <div class="row">
             <div class="card-body p-4 p-sm-5">
-                <div class="error-content">
-                    <h1>404</h1>
-                    <h2>Oops! Page Not Found!</h2>
-                    <p>The page you are looking for does not exist. It might have been moved or deleted.</p>
+                <div class="card bg-whiteborder-0 shadow rounded-3 my-5">
+                    <div class="card-body p-4 p-sm-5">
+                        <div class="error-content">
+                            <h1>404</h1>
+                            <h2>Oops! Page Not Found!</h2>
+                            <p>The page you are looking for does not exist. It might have been moved or deleted.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -50,6 +50,7 @@
             // Gọi hàm reloadWardList để load lại danh sách trên form
             let reload_url = $(e).data('return-url');
             // thẻ <div> chứa danh sách ward
+            //$("#quantity_cart").load(location.reload_url + " #quantity_cart");
             let target = $('#cart-list');
             //reloadWardList(reload_url, target);
             Swal.fire(

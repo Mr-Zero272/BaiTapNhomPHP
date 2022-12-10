@@ -59,7 +59,7 @@ class LoginController extends BaseController
     {
 
         $this->signout();
-
+        
         $this->session->setFlash(\FLASH::INFO, 'Bye');
         //redirect('/home');
         $this->redirect('/home');

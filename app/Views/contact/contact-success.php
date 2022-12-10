@@ -7,8 +7,8 @@
             <div class="card-body p-4 p-sm-5">
                 <div class="card bg-whiteborder-0 shadow rounded-3 my-5">
                     <div class="card-body p-4 p-sm-5">
-                        <h2>Your Account created successfully!</h2>
-                        <p>Thanks for joining with us, please <a href="/login">Login</a> to your account now.</p>
+                        <h2>Your message was sent successfully.</h2>
+                        <p>Thanks for contacting with us, We will get back to you.</p>
                     </div>
                 </div>
             </div>

@@ -5,30 +5,30 @@
             <div class="mySlides fade">
                 <div class="home__container bd-container bd-grid">
                     <div class="home__data">
-                        <h1 class="home__title">BLACK ALDAS SHOES</h1>
-                        <h2 class="home__subtitle">Black Aldas shoes are special shoes for Kids</h2>
+                        <h1 class="home__title">KIDS PITR SHOES</h1>
+                        <h2 class="home__subtitle">PITR shoes are special shoes for Kids</h2>
                     </div>
-                    <img src="assets/images/1.png" alt="" class="home__img">
+                    <img src="assets/images/3.png" alt="" class="home__img">
                 </div>
             </div>
 
             <div class="mySlides fade">
                 <div class="home__container bd-container bd-grid">
                     <div class="home__data">
-                        <h1 class="home__title">BLACK AND WHITE STAKE SHOES</h1>
-                        <h2 class="home__subtitle">Black and White Stake Shoes Are Special Shoes For Men</h2>
+                        <h1 class="home__title">FF POWER ENERGY</h1>
+                        <h2 class="home__subtitle">FF Power Energy Shoes Are Special Shoes For Men</h2>
                     </div>
-                    <img src="assets/images/21.laki.png" alt="" class="home__img">
+                    <img src="assets/images/22.png" alt="" class="home__img">
                 </div>
             </div>
 
             <div class="mySlides fade">
                 <div class="home__container bd-container bd-grid">
                     <div class="home__data">
-                        <h1 class="home__title">LSP 1903 RAINBOW SHOES</h1>
-                        <h2 class="home__subtitle">Lsp 1903 Rainbow Shoes Are Special Shoes For Women</h2>
+                        <h1 class="home__title">LEYLA SHOES</h1>
+                        <h2 class="home__subtitle">Leyla Shoes Are Special Shoes For Women</h2>
                     </div>
-                    <img src="assets/images/10.wanita.png" alt="" class="home__img">
+                    <img src="assets/images/11.png" alt="" class="home__img">
                 </div>
             </div>
 
@@ -67,18 +67,18 @@
             <h2 class="section-title">Our Amazing Services</h2>
             <div class="services__container bd-grid">
                 <div class="services__content">
-                    <img src="assets/images/1.3.png" alt="" class="services__img">
+                    <img src="assets/images/10.4.jpg" alt="" class="services__img">
                     <h3 class="services__title">Upper Canvas</h3>
                     <p class="services__description">SUPER LIGHTWEIGHT, Superlite Phylon Sole is made from a special
                         compound material, which results in a very soft and comfortable outsole.</p>
                 </div>
                 <div class="services__content">
-                    <img src="assets/images/2.3.png" alt="" class="services__img">
+                    <img src="assets/images/17.3.webp" alt="" class="services__img">
                     <h3 class="services__title">Eva Sponge Insole</h3>
                     <p class="services__description">EVA Sponge Insole provides Ultimate Cushion and Comfort</p>
                 </div>
                 <div class="services__content">
-                    <img src="assets/images/3.png" alt="" class="services__img">
+                    <img src="assets/images/19.2.webp" alt="" class="services__img">
                     <h3 class="services__title">Stitching</h3>
                     <p class="services__description">Neat stitching makes the shoes have a good shape, sturdy,
                         comfortable, and durable.</p>
@@ -92,66 +92,22 @@
         <h2 class="section-title">PRODUCTS of the week</h2>
 
         <div class="products__container bd-grid logo-slider slick_two">
-            <div class="products__content">
-                <img src="assets/images/1.png" alt="" class="product__img">
-                <h3 class="products__name">Black Aldas Shoes</h3>
-                <span class="products__detail">Low Price</span><br>
-                <span class="products__price">Rp. 200.000</span>
-                <a href="Sepatualdashitam.html" class="button products__button_detail">Product Detail</a>
-                <a href="#" class="button products__button"><i class='bx bx-cart-alt'></i></a>
-            </div>
-
-            <div class="products__content">
-                <img src="assets/images/2.png" alt="" class="product__img">
-                <h3 class="products__name">White Kenji Shoes</h3>
-                <span class="products__detail">Low Price</span><br>
-                <span class="products__price">Rp. 200.000</span>
-                <a href="Sepatu-Kenji-Putih.html" class="button products__button_detail">Product Detail</a>
-                <a href="#" class="button products__button"><i class='bx bx-cart-alt'></i></a>
-            </div>
-
-            <div class="products__content">
-                <img src="assets/images/3.png" alt="" class="product__img">
-                <h3 class="products__name">BlackWhite Kinara Shoes</h3>
-                <span class="products__detail">Low Price</span><br>
-                <span class="products__price">Rp. 184.000</span>
-                <a href="Sepatu-Kinara-HitamPutih.html" class="button products__button_detail">Product Detail</a>
-                <a href="#" class="button products__button"><i class='bx bx-cart-alt'></i></a>
-            </div>
-
-            <div class="products__content">
-                <img src="assets/images/4.png" alt="" class="product__img">
-                <h3 class="products__name">Grey Pulse Shoes</h3>
-                <span class="products__detail">Low Price</span><br>
-                <span class="products__price">Rp. 329.000</span>
-                <a href="Sepatu-Pulse-Abu.html" class="button products__button_detail">Product Detail</a>
-                <a href="#" class="button products__button"><i class='bx bx-cart-alt'></i></a>
-            </div>
-
-            <div class="products__content">
-                <img src="assets/images/5.png" alt="" class="product__img">
-                <h3 class="products__name">Grey Leyla Shoes</h3>
-                <span class="products__detail">High Price</span><br>
-                <span class="products__price">Rp. 185.000</span>
-                <a href="Sepatu-Leyla-Abu.html" class="button products__button_detail">Product Detail</a>
-                <a href="#" class="button products__button"><i class='bx bx-cart-alt'></i></a>
-            </div>
-            <div class="products__content">
-                <img src="assets/images/6.png" alt="" class="product__img">
-                <h3 class="products__name">White Leyla Shoes</h3>
-                <span class="products__detail">High Price</span><br>
-                <span class="products__price">Rp. 369.000</span>
-                <a href="Sepatu-Leyla-Putih.html" class="button products__button_detail">Product Detail</a>
-                <a href="#" class="button products__button"><i class='bx bx-cart-alt'></i></a>
-            </div>
-            <div class="products__content">
-                <img src="assets/images/7.png" alt="" class="product__img">
-                <h3 class="products__name">DarkGrey Flux Shoes</h3>
-                <span class="products__detail">High Price</span><br>
-                <span class="products__price">Rp. 349.000</span>
-                <a href="Sepatu-Flux-AbuTua.html" class="button products__button_detail">Product Detail</a>
-                <a href="#" class="button products__button"><i class='bx bx-cart-alt'></i></a>
-            </div>
+        <?php foreach ($products as $product): ?>
+        <div class="products__content">
+            <img src="<?= $product->link_image ?>" alt="" class="product__img">
+            <h3 class="products__name">
+                <?= $product->name ?>
+            </h3>
+            <span class="products__detail">Low Price</span><br>
+            <span class="products__price">&#8363 <?= $product->price ?></span>
+            <a href="/product_detail?id=<?= $product->id ?>" class="button products__button_detail">Product Detail</a>
+            <a href="/product/add?id=<?= $product->id ?>" class="button products__button"
+            data-id="<?= $product->id ?>" 
+            title="Add <?= $product->name ?>" 
+            data-name="<?= $product->name ?>" 
+            data-return-url="<?= request()->fullUrl(); ?>"><i class='bx bx-cart-alt'></i></a>
+        </div>
+        <?php endforeach; ?>
         </div>
     </section>
 
@@ -168,7 +124,7 @@
                     </p>
                 </div>
                 <div class="contact__button">
-                    <a href="Contact.html" class="button">Contact Us Now</a>
+                    <a href="/contact" class="button">Contact Us Now</a>
                 </div>
             </div>
         </section>

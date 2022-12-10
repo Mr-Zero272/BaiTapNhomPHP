@@ -28,10 +28,9 @@
                                 <input type="checkbox" name="remember_me" value="remember_password" class="form-check-input width-auto" id="remember_me" />
                                 <label class="form-check-label" for="remember_me">Remember me</label>
                             </div>
-                            <a class="lost-pass" href="account-password-recovery.html">Forgot password?</a>
                         </div>
                         <div class="d-grid">
-                            <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Login</button>
+                            <button class="button text-uppercase fw-bold" type="submit">Login</button>
                         </div>
                         <p class="outer-link">
                             Don't have an account?

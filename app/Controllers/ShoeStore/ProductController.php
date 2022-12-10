@@ -21,11 +21,28 @@ class ProductController extends BaseController
                                                    'productsMan' => $productsMan]);
     }
 
+    public static function setQuantityForCart()
+    {
+        $total = Cart::all();
+        $number = 0;
+        foreach($total as $product)
+        {
+            $number += $product->quantity;
+        }
+        session()->set('quantity', serialize($number));
+    }
+
     public function showCart(){
         if (auth())
         {
             $productsInCart = Cart::with('product')->get();
-    
+            // $number = 0;
+            // foreach($productsInCart as $product)
+            // {
+            //     $number += $product->quantity;
+            // }
+            // session()->set('quantity', serialize($number));
+            ProductController::setQuantityForCart();
             return $this->render(
                 'shoeStore/cart',
                 [
@@ -39,7 +56,7 @@ class ProductController extends BaseController
 
     }
 
-    public function addToCart(){
+    public function addToCart(){ 
         if (auth())
         {
             $id = $this->request->post('id');
@@ -51,6 +68,7 @@ class ProductController extends BaseController
                 if ($this->request->ajax()) {
                     if ($product) {
                         if ($exist->save()) {
+                            ProductController::setQuantityForCart();
                             return $this->json([
                                 'message' => $product->name . 'has been added successfully!'
                             ], Response::HTTP_OK);
@@ -74,13 +92,13 @@ class ProductController extends BaseController
                     'updated_at' => null,
                     'deleted_at' => null
                 ];
-    
                 $cart = new Cart();
                 $cart->fill($data);
         
                 if ($this->request->ajax()) {
                     if ($product) {
                         if ($cart->save()) {
+                            ProductController::setQuantityForCart();
                             return $this->json([
                                 'message' => $product->name . 'has been added successfully!'
                             ], Response::HTTP_OK);
@@ -95,8 +113,7 @@ class ProductController extends BaseController
                     ], Response::HTTP_NOT_FOUND);
                 }
             }
-    
-    
+
             $return_url = $this->request->post('return_url', '/home');
             return $this->redirect($return_url);
         } else {
@@ -104,7 +121,6 @@ class ProductController extends BaseController
                 'message' => 'You need to log in before shopping!'
             ], Response::HTTP_BAD_REQUEST);
         }
-        
     }
 
     public function deleteProductFromCart(){
@@ -167,7 +183,7 @@ class ProductController extends BaseController
             {
                 if ($checkout->delete()) {
                     return $this->json([
-                        'message' => 'Thank ' . $user->username . ' for shopping in our shop.'
+                        'message' => 'Thank ' . $user->username . ' for shopping in our shop. Please check your email to track your order and invoice.'
                     ], Response::HTTP_OK);
                 } else {
                     return $this->json([
