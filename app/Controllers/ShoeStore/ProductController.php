@@ -85,7 +85,7 @@ class ProductController extends BaseController
                 }
             } else if(!$exist) {
                 $data = [
-                    'id' => $product->id,
+                    'id' => $product->id + (100 * auth()->id),
                     'id_product'=> $product->id,
                     'id_user'=> auth()->id,
                     'quantity' => 1,
@@ -128,7 +128,7 @@ class ProductController extends BaseController
         $id = $this->request->post('id');
 
         $cart = Cart::find($id);
-        $productsInCart = Product::find($id);
+        $productsInCart = Product::find($id - (auth()->id * 100));
 
         //Neu ajax request tra ve json
         if ($this->request->ajax())
@@ -157,6 +157,7 @@ class ProductController extends BaseController
     public function updateQuantity()
     {
         $id = $this->request->post('update_quantity_id');
+        $id = (int) $id + (auth()->id * 100);
         $quantity = $this->request->post('update_quantity');
         $cart = Cart::find($id);
         if ($cart)
