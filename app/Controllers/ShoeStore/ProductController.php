@@ -62,7 +62,7 @@ class ProductController extends BaseController
         {
             $id = $this->request->post('id');
             $product = Product::find($id);
-            $exist = Cart::find($product->id);
+            $exist = Cart::find($product->id + (100 * auth()->id));
             if($exist)
             {
                 $exist->quantity += 1;
