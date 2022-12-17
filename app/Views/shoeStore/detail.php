@@ -30,11 +30,30 @@
                         to help you go faster and farther. It's a radiant, empowering twist on a running essential, inspired by our human 
                         pacers who inspire through connection.</p>
                     <p class="card-text"><small class="text-muted">You can adjust the quantity in the cart.</small></p>
-                    <a href="/product/add?id=<?= $detail->id ?>" class="btn btn-outline-primary add_from_detail"
-                    data-id="<?= $detail->id ?>" 
-                    title="Add <?= $detail->product->name ?>" 
-                    data-name="<?= $detail->product->name ?>" 
-                    data-return-url="<?= request()->fullUrl(); ?>">Add to cart <i class="fas fa-cart-arrow-down"></i></a>
+                    <form action="/product/add?id=<?= $detail->product->id ?>" class="" method="post" id="addFromDetail">
+                        <input type="text" name="id" hidden value="<?= $detail->product->id ?>">
+                        <label for="size" class="form-label" style="font-weight: 700;">Size:</label>
+                        <select name="size" style="max-width: 100px;" class="form-select" aria-label="Default select example">
+                        <?php if ($detail->product->kind == 'kid'): ?>
+                        <?php for ($i = 25; $i < 34; $i++):?>
+                            <option value="<?= $i - 24 ?>"><?= $i ?></option>
+                        <?php endfor; ?>
+                        <?php elseif($detail->product->kind == 'woman'): ?>
+                            <?php for ($i = 35; $i < 40; $i++):?>
+                            <option value="<?= $i - 25 ?>"><?= $i ?></option>
+                            <?php endfor; ?>
+                        <?php else:?>
+                            <?php for ($i = 39; $i < 46; $i++):?>
+                            <option value="<?= $i - 25 ?>"><?= $i ?></option>
+                            <?php endfor; ?>
+                        <?php endif;?>
+                        </select>
+                        <button type="submit" class="btn add_from_detail"
+                        data-id="<?= $detail->product->id ?>"
+                        title="Add <?= $detail->product->name ?>" 
+                        data-name="<?= $detail->product->name ?>" 
+                        data-return-url="http://mvc.local/product/add"><i class='bx bx-cart-alt'></i></button>
+                    </form>
                 </div>
             </div>
         </div>

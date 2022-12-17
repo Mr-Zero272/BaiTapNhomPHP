@@ -9,34 +9,37 @@ use App\Models\Detail;
 use App\Models\User;
 use App\Http\Paginator;
 use App\Http\Response;
+use FLASH;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends BaseController
 {
-    public function showProducts(){
+    public function showProducts()
+    {
         $productsKid = Product::Where('kind', 'kid')->get();
         $productsWoman = Product::Where('kind', 'woman')->get();
         $productsMan = Product::Where('kind', 'man')->get();
-        return $this->render('shoeStore/product', ['productsKid' => $productsKid, 
-                                                   'productsWoman' => $productsWoman,
-                                                   'productsMan' => $productsMan]);
+        return $this->render('shoeStore/product', [
+            'productsKid' => $productsKid,
+            'productsWoman' => $productsWoman,
+            'productsMan' => $productsMan
+        ]);
     }
 
     public static function setQuantityForCart()
     {
         $total = Cart::Where('id_user', auth()->id)->get();
         $number = 0;
-        foreach($total as $product)
-        {
+        foreach ($total as $product) {
             $number += $product->quantity;
         }
         session()->set('quantity', serialize($number));
     }
 
-    public function showCart(){
-        if (auth())
-        {
-            $productsInCart = Cart::with('product')->where('id_user', auth()->id)->get();
+    public function showCart()
+    {
+        if (auth()) {
+            $productsInCart = Cart::Where('id_user', auth()->id)->get();
             // $number = 0;
             // foreach($productsInCart as $product)
             // {
@@ -57,14 +60,22 @@ class ProductController extends BaseController
 
     }
 
-    public function addToCart(){ 
-        if (auth())
-        {
+    public function addToCart()
+    {
+        if (auth()) {
             $id = $this->request->post('id');
             $product = Product::find($id);
-            $exist = Cart::find($product->id + (100 * auth()->id));
-            if($exist)
-            {
+            $size = $this->request->post('size');
+            if(!$size) {
+                if ((string) $product->kind == 'kid') {
+                    $size = 1;
+                } else if ((string) $product->kind == 'woman') {
+                    $size = 10;
+                } else
+                    $size = 14;
+            }
+            $exist = Cart::find((auth()->id * 1000) + ($product->id*10) +  $size);
+            if ($exist) {
                 $exist->quantity += 1;
                 if ($this->request->ajax()) {
                     if ($product) {
@@ -83,11 +94,12 @@ class ProductController extends BaseController
                         'message' => 'Product ID does not exists!'
                     ], Response::HTTP_NOT_FOUND);
                 }
-            } else if(!$exist) {
+            } else if (!$exist) {
                 $data = [
-                    'id' => $product->id + (100 * auth()->id),
-                    'id_product'=> $product->id,
-                    'id_user'=> auth()->id,
+                    'id' => (auth()->id * 1000) + ($product->id*10) +  $size,
+                    'id_product' => $product->id,
+                    'id_user' => auth()->id,
+                    'size' => $size,
                     'quantity' => 1,
                     'created_at' => '2022-05-11 08:36:57',
                     'updated_at' => null,
@@ -95,7 +107,7 @@ class ProductController extends BaseController
                 ];
                 $cart = new Cart();
                 $cart->fill($data);
-        
+
                 if ($this->request->ajax()) {
                     if ($product) {
                         if ($cart->save()) {
@@ -124,17 +136,16 @@ class ProductController extends BaseController
         }
     }
 
-    public function deleteProductFromCart(){
+    public function deleteProductFromCart()
+    {
         $id = $this->request->post('id');
-
         $cart = Cart::find($id);
-        $productsInCart = Product::find($id - (auth()->id * 100));
+        $id = floor(($id - (auth()->id * 1000)) / 10);
+        $productsInCart = Product::find($id);
 
         //Neu ajax request tra ve json
-        if ($this->request->ajax())
-        {
-            if ($cart)
-            {
+        if ($this->request->ajax()) {
+            if ($cart) {
                 if ($cart->delete()) {
                     return $this->json([
                         'message' => $productsInCart->name . ' has ben deleted successfully'
@@ -154,35 +165,73 @@ class ProductController extends BaseController
         return $this->redirect($return_url);
     }
 
+    // public function updateQuantity()
+    // {
+    //     $id = $this->request->post('update_quantity_id');
+    //     $quantity = $this->request->post('update_quantity');
+    //     $cart = Cart::find($id);
+    //     if ($cart) {
+    //         $cart->quantity = $quantity;
+    //         if ($cart->save()) {
+    //             session()->setFlash(\FLASH::SUCCESS, 'Quantity has been updated');
+    //         } else {
+    //             session()->setFlash(\FLASH::ERROR, 'Unable to update');
+    //         }
+    //     } else {
+    //         session()->setFlash(\FLASH::ERROR, 'ID was not exist');
+    //     }
+    //     return $this->redirect('/cart');
+    // }
+
     public function updateQuantity()
     {
-        $id = $this->request->post('update_quantity_id');
-        $id = (int) $id + (auth()->id * 100);
-        $quantity = $this->request->post('update_quantity');
+        $id = $this->request->post('id');
+        $quantity = $this->request->post('quantity');
         $cart = Cart::find($id);
-        if ($cart)
-        {
-            $cart->quantity = $quantity;
-            if ($cart->save())
-            {
-                session()->setFlash(\FLASH::SUCCESS, 'Quantity has been updated');
+        if ($this->request->ajax()) {
+            if ($cart) {
+                $cart->quantity = $quantity;
+                if ($cart->save()) {
+                    session()->setFlash(\FLASH::SUCCESS, 'Quantity has been updated');
+                } else {
+                    session()->setFlash(\FLASH::ERROR, 'Unable to update');
+                }
             } else {
-                session()->setFlash(\FLASH::ERROR, 'Unable to update');
+                session()->setFlash(\FLASH::ERROR, 'ID was not exist');
             }
-        } else {
-            session()->setFlash(\FLASH::ERROR, 'ID was not exist');
         }
-        return $this->redirect('/cart');
+       
+        //return $this->redirect('/cart');
     }
 
-    public function checkOut(){
+    public function updateSize()
+    {
+        $id = $this->request->post('id');
+        $size = $this->request->post('size');
+        $cart = Cart::find($id);
+        if ($this->request->ajax()) {
+            if ($cart) {
+                $cart->size = $size;
+                if ($cart->save()) {
+                    session()->setFlash(\FLASH::SUCCESS, 'Quantity has been updated');
+                } else {
+                    session()->setFlash(\FLASH::ERROR, 'Unable to update');
+                }
+            } else {
+                session()->setFlash(\FLASH::ERROR, 'ID was not exist');
+            }
+        }
+       
+        //return $this->redirect('/cart');
+    }
+
+    public function checkOut()
+    {
         $id_user = $this->request->post('id');
         $checkout = Cart::Where('id_user', $id_user);
         $user = User::find($id_user);
-        if ($this->request->ajax())
-        {
-            if ($checkout)
-            {
+        if ($this->request->ajax()) {
+            if ($checkout) {
                 if ($checkout->delete()) {
                     return $this->json([
                         'message' => 'Thank ' . $user->username . ' for shopping in our shop. Please check your email to track your order and invoice.'
@@ -198,11 +247,12 @@ class ProductController extends BaseController
             ], Response::HTTP_NOT_FOUND);
         }
 
-        $return_url = $this->request->post('return_url', '/home'); 
+        $return_url = $this->request->post('return_url', '/home');
         return $this->redirect($return_url);
     }
 
-    public function showDetailProduct(){
+    public function showDetailProduct()
+    {
         //tai sao cai link /product/detail thi ko co css ;?
         //$detailProduct = Detail::with('product')->where('id', 13)->get();
         $id = $this->request->get('id');
@@ -216,7 +266,8 @@ class ProductController extends BaseController
         );
     }
 
-    public function showAllProduct(){
+    public function showAllProduct()
+    {
         $kind = $this->request->get('kind');
         $products = Product::Where('kind', $kind)->get();
         return $this->render('shoeStore/all-product-' . $kind, ['products' => $products]);
@@ -227,7 +278,8 @@ class ProductController extends BaseController
         return $this->render('shoeStore/product-add');
     }
 
-    public function addProduct(){
+    public function addProduct()
+    {
         //$data = $_POST;
         $data = [
             'id_user' => 'user1',
@@ -242,8 +294,7 @@ class ProductController extends BaseController
         ];
         $cart = new Cart();
         $cart->fill($data);
-        if ($cart->save())
-        {
+        if ($cart->save()) {
             session()->setFlash(\FLASH::ERROR, 'Can\'t add product, something went wrong!');
             return $this->redirect('/cart');
         } else {

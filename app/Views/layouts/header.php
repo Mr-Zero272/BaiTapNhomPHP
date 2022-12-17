@@ -19,14 +19,16 @@
         </div>
         <div class="nav_login">
             <?php if (auth()): ?>
-                <span>Hello <?= auth()->username ?></span>
+            <span>Hello <?= auth()->username ?></span>
             <?php endif; ?>
             <a href="/cart" class="btn btn-outline-dark cart">
                 <i class="bx bxs-cart"></i>
                 <span class="quantity_cart" id="quantity_cart">
-                    <?php if (auth()) :?>
-                    <span><?= cart() ?></span>
-                    <?php else:?>
+                    <?php if (auth()): ?>
+                    <span>
+                        <?= cart() ?>
+                    </span>
+                    <?php else: ?>
                     <span>0</span>
                     <?php endif; ?>
                 </span>
@@ -73,11 +75,32 @@
                     </li>
                 </ul>
                 <div class="nav_shop ml-auto">
-                    <a href="/cart" class="btn btn-outline-secondary">
+                    <?php if (auth()): ?>
+                    <span>Hello <?= auth()->username ?></span>
+                    <?php endif; ?>
+                    <a href="/cart" class="btn btn-outline-dark cart">
                         <i class="bx bxs-cart"></i>
+                        <span class="quantity_cart" id="quantity_cart">
+                            <?php if (auth()): ?>
+                            <span>
+                                <?= cart() ?>
+                            </span>
+                            <?php else: ?>
+                            <span>0</span>
+                            <?php endif; ?>
+                        </span>
                     </a>
-                    <a href="#" class="nav__icon btn btn-outline-secondary">
-                        <i class='bx bxs-user-circle'></i>
+                    <?php if (auth()): ?>
+                    <a href="/logout" class="btn btn-outline-dark log_out">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </a>
+                    <?php else: ?>
+                    <a href="/login" class="btn btn-outline-dark log_in">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <?php endif; ?>
+                    <a href="/register" class="btn btn-outline-dark register">
+                        <i class="fas fa-user-plus"></i>
                     </a>
                 </div>
             </div>

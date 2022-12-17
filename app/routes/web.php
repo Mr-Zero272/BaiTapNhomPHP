@@ -26,8 +26,15 @@ Router::error("\App\Controllers\ErrorController@notFoundError");
 //Shoe store
 Router::get('/product', 'App\Controllers\ShoeStore\ProductController@showProducts');
 
+//Show cart list
 Router::get('/cart', 'App\Controllers\ShoeStore\ProductController@showCart');
-Router::post('/cart', 'App\Controllers\ShoeStore\ProductController@updateQuantity');
+//Router::post('/cart', 'App\Controllers\ShoeStore\ProductController@showCart');
+
+//Update quantity
+Router::post('/cart/updateQuantity', 'App\Controllers\ShoeStore\ProductController@updateQuantity');
+//Update size
+Router::post('/cart/updateSize', 'App\Controllers\ShoeStore\ProductController@updateSize');
+
 
 Router::post('/product/add', 'App\Controllers\ShoeStore\ProductController@addToCart');
 Router::post('/cart/delete', 'App\Controllers\ShoeStore\ProductController@deleteProductFromCart');

@@ -3,13 +3,9 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Models\Product;
 
-class Cart extends Model
+class Quantity extends Model
 {
-
-//    use SoftDeletes; 
 
     /**
      * Tên bảng, nếu không có thuộc tính này
@@ -17,7 +13,7 @@ class Cart extends Model
      *
      * @var string
      */
-    protected $table = 'cart';
+    protected $table = 'quantity';
 
     /**
      * Sử dụng các thuộc tính created_at và updated_at trong bảng
@@ -39,7 +35,6 @@ class Cart extends Model
     protected $fillable = [
         'id',
         'id_product',
-        'id_user',
         'size',
         'quantity',
         'created_at',
@@ -50,8 +45,5 @@ class Cart extends Model
     public function product(){
         return $this->belongsTo(Product::class, 'id_product');
     }
-
-    public function sizes(){
-        return $this->belongsTo(Size::class, 'size');
-    }
 }
+?>

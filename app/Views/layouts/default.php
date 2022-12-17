@@ -94,7 +94,6 @@
     <!-- insert specific page's scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="<?= request()->baseUrl(); ?>/assets/js/bootstrap.bundle.min.js"></script>
     <script src="<?= request()->baseUrl(); ?>/assets/js/tiny-slider.js"></script>
     <script src="<?= request()->baseUrl(); ?>/assets/js/glightbox.min.js"></script>
     <!-- <script src="<?= request()->baseUrl(); ?>/assets/js/sweetalert2.all.min.js"></script> -->

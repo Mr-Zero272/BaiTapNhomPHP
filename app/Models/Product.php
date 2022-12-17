@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use App\Model\Cart;
 
 class Product extends Model
 {
 
-    use SoftDeletes; 
+//    use SoftDeletes; 
 
     /**
      * Tên bảng, nếu không có thuộc tính này
@@ -48,8 +47,7 @@ class Product extends Model
         'deleted_at'
     ];
 
-    public function carts()
-    {
-        return $this->belongsTo(Cart::class);
+    public function size(){
+        return $this->hasMany(Size::class, 'id');
     }
 }

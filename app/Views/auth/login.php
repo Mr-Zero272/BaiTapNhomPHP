@@ -10,14 +10,14 @@
                     <form class="login-form" method="post" action="/login">
                         <h3>Login Now</h3>
                         <div class="form-floating mb-3">
-                            <input type="username" name="username" value="<?= $params['username'] ?? null ?>" class="form-control <?= isset($errors['username']) ? ' is-invalid' : ''  ?>" id="username" placeholder="Your username" required>
+                            <input type="username" name="username" value="kennedi40<?= $params['username'] ?? null ?>" class="form-control <?= isset($errors['username']) ? ' is-invalid' : ''  ?>" id="username" placeholder="Your username" required>
                             <label for="username">Username</label>
                             <div class="invalid-feedback">
                                 <?= $errors['username'] ?? null; ?>
                             </div>
                         </div>
                         <div class="form-floating">
-                            <input type="password" name="password" class="form-control <?= isset($errors['password']) ? ' is-invalid' : ''  ?>" id="password" placeholder="Password" required>
+                            <input type="password" name="password" class="form-control <?= isset($errors['password']) ? ' is-invalid' : ''  ?>" id="password" placeholder="Password" required value="PHPNhom8!">
                             <label for="password">Password</label>
                             <div class="invalid-feedback">
                                 <?= $errors['password'] ?? null ?>
