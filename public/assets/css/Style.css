@@ -354,32 +354,6 @@ img {
 }
 
 /* animation */
-.fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
-
-@-webkit-keyframes fade {
-    from {
-        opacity: .4;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fade {
-    from {
-        opacity: .4;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
 
 /* About */
 .about__data {
@@ -737,16 +711,6 @@ img {
     border-radius: 20px;
 }
 
-@keyframes fade {
-    0% {
-        opacity: 0;
-    }
-
-    100% {
-        opacity: 1;
-    }
-}
-
 .buy-btn:hover {
     color: #ffffff;
     background-color: #A85CF9;
@@ -1086,4 +1050,11 @@ img {
 .img_info{
     height: 220px;
     width: 70px;
+}
+
+.check_out{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%, -50%);
 }

@@ -202,6 +202,7 @@
         var url = $(e).data('href');
         var id = $(e).data('id');
         var size = $(e).val();
+        //alert(Math.trunc(id/100)*100 + parseInt(size));
         $.ajax({
             method: "POST",
             url: url,

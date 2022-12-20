@@ -41,6 +41,7 @@ class Cart extends Model
         'id_product',
         'id_user',
         'size',
+        'color',
         'quantity',
         'created_at',
         'updated_at',

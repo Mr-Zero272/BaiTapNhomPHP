@@ -74,7 +74,7 @@ class ProductController extends BaseController
                 } else
                     $size = 14;
             }
-            $exist = Cart::find((auth()->id * 1000) + ($product->id*10) +  $size);
+            $exist = Cart::find((auth()->id * 10000) + ($product->id*100) +  $size);
             if ($exist) {
                 $exist->quantity += 1;
                 if ($this->request->ajax()) {
@@ -96,10 +96,11 @@ class ProductController extends BaseController
                 }
             } else if (!$exist) {
                 $data = [
-                    'id' => (auth()->id * 1000) + ($product->id*10) +  $size,
+                    'id' => (auth()->id * 10000) + ($product->id*100) +  $size,
                     'id_product' => $product->id,
                     'id_user' => auth()->id,
                     'size' => $size,
+                    'color' => 1,
                     'quantity' => 1,
                     'created_at' => '2022-05-11 08:36:57',
                     'updated_at' => null,
@@ -140,7 +141,7 @@ class ProductController extends BaseController
     {
         $id = $this->request->post('id');
         $cart = Cart::find($id);
-        $id = floor(($id - (auth()->id * 1000)) / 10);
+        $id = floor(($id - (auth()->id * 10000)) / 100);
         $productsInCart = Product::find($id);
 
         //Neu ajax request tra ve json
@@ -209,16 +210,31 @@ class ProductController extends BaseController
         $id = $this->request->post('id');
         $size = $this->request->post('size');
         $cart = Cart::find($id);
+        $id_exist = (int)(auth()->id*10000 + $cart->id_product * 100 + $size);
+        $exist = Cart::find($id_exist);
         if ($this->request->ajax()) {
-            if ($cart) {
-                $cart->size = $size;
-                if ($cart->save()) {
-                    session()->setFlash(\FLASH::SUCCESS, 'Quantity has been updated');
-                } else {
-                    session()->setFlash(\FLASH::ERROR, 'Unable to update');
-                }
-            } else {
-                session()->setFlash(\FLASH::ERROR, 'ID was not exist');
+            if (!$exist)
+            {
+                $data = [
+                    'id' => $id_exist,
+                    'id_product' => $cart->id_product,
+                    'id_user' => auth()->id,
+                    'size' => $size,
+                    'color' => 1,
+                    'quantity' => $cart->quantity,
+                    'created_at' => '2022-05-11 08:36:57',
+                    'updated_at' => null,
+                    'deleted_at' => null
+                ];
+                $cartNew = new Cart();
+                $cartNew->fill($data);
+                $cartNew->save();
+                $cart->delete();
+            } else
+            {
+                $exist->quantity += $cart->quantity;
+                $exist->save();
+                $cart->delete();
             }
         }
        
