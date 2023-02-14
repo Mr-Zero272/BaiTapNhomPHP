@@ -47,7 +47,7 @@ class Product extends Model
         'deleted_at'
     ];
 
-    public function size(){
-        return $this->hasMany(Size::class, 'id');
+    public function color(){
+        return $this->hasMany(Quantity::class, 'id_product', 'id');
     }
 }

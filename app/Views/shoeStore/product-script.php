@@ -8,7 +8,6 @@
             // hiển thị Sweetaler2 và xoá bằng ajax 
             // hoặc uncomment showModalConfirm() để xoá theo kiểu bình thường
             showConfirmAdd(event.currentTarget);
-            a++;
             // hoặc sử dụng Bootstrap Modal
             //showModalConfirm(event.currentTarget); // lấy phần tử <a> vừa được click
         })

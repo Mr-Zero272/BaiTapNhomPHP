@@ -11,3 +11,13 @@
     top: 0px;
     right: 0px;
 }
+
+.container_checkout_form{
+    width: 60%;
+}
+
+@media screen and (max-width: 768px) {
+    .container_checkout_form{
+        width: 100%;
+    }
+}

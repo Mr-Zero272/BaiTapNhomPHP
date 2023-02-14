@@ -12,13 +12,41 @@
                 <?= $productKid->name ?>
             </h3>
             <span class="products__detail">Low Price</span><br>
-            <span class="products__price">&#8363 <?= $productKid->price ?></span>
+            <span class="products__price">&#8363;<?= $productKid->price ?></span>
             <a href="/product_detail?id=<?= $productKid->id ?>" class="button products__button_detail">Product Detail</a>
             <a href="/product/add?id=<?= $productKid->id ?>" class="button products__button"
             data-id="<?= $productKid->id ?>" 
             title="Add <?= $productKid->name ?>" 
             data-name="<?= $productKid->name ?>" 
             data-return-url="<?= request()->fullUrl(); ?>"><i class='bx bx-cart-alt'></i></a>
+            <a href="http://mvc.local/cart?id=<?= $productKid->id; ?>" type="button" class="btn btn-outline-dark form-control d-flex justify-content-between update_info_product" 
+                        data-id="<?= $productKid->id; ?>" 
+                        data-name="<?= $productKid->name ?>" 
+                        data-price="<?= $productKid->price ?>"
+                        data-active_size="0"
+                        data-active_color = "0"
+                        data-kind = "<?= $productKid->kind ?>"
+                        data-name_colors="<?php foreach($colors as $color) : ?>
+                                    <?php if($color->id_product == $productKid->id): ?>
+                                    <?= $color->colors->name_color;?>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>"
+                        data-id_colors="<?php foreach($colors as $color) : ?>
+                                    <?php if($color->id_product == $productKid->id): ?>
+                                    <?= $color->colors->id;?>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>"
+                        data-quantity_left_list="<?php foreach($quantityInWarehouse as $quantityLeft) : ?>
+                                    <?php if($quantityLeft->id_product == $productKid->id): ?>
+                                    <?= $quantityLeft->id_product . ' ' . $quantityLeft->size . ' ' . $quantityLeft->color. ' ' . $quantityLeft->quantity; ?>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>"
+                        data-quantity="1"
+                        data-img="<?= $productKid->link_image ?>"
+                        data-url="<?= request()->fullUrl(); ?>" 
+                        data-href="<?= request()->baseUrl(); ?>/product">
+                        <i class='bx bx-cart-alt'></i>
+                        </a>
         </div>
         <?php endforeach; ?>
     </div>
@@ -76,4 +104,5 @@
     </div>
 </section>
 <!-- sepatu laki -->
+<?php $this->insert('shoeStore/modal-product') ?>
 <?php $this->stop(); ?>

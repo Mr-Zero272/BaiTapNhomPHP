@@ -28,7 +28,8 @@ Router::get('/product', 'App\Controllers\ShoeStore\ProductController@showProduct
 
 //Show cart list
 Router::get('/cart', 'App\Controllers\ShoeStore\ProductController@showCart');
-//Router::post('/cart', 'App\Controllers\ShoeStore\ProductController@showCart');
+Router::post('/cart/update', 'App\Controllers\ShoeStore\ProductController@updateCart');
+
 
 //Update quantity
 Router::post('/cart/updateQuantity', 'App\Controllers\ShoeStore\ProductController@updateQuantity');

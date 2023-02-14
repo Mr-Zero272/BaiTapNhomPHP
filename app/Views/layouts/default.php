@@ -65,7 +65,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="assets/js/Main.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="assets/js/slick.js"></script>
     <script src="assets/js/slick.min.js"></script>
     <!-----JS---->
@@ -97,7 +96,6 @@
         </script>
 
     <!-- insert specific page's scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="<?= request()->baseUrl(); ?>/assets/js/tiny-slider.js"></script>
     <script src="<?= request()->baseUrl(); ?>/assets/js/glightbox.min.js"></script>

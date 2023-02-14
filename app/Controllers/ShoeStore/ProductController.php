@@ -3,9 +3,11 @@
 namespace App\Controllers\ShoeStore;
 
 use App\Controllers\BaseController;
+use App\Models\ColorProduct;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Detail;
+use App\Models\Quantity;
 use App\Models\User;
 use App\Http\Paginator;
 use App\Http\Response;
@@ -19,10 +21,14 @@ class ProductController extends BaseController
         $productsKid = Product::Where('kind', 'kid')->get();
         $productsWoman = Product::Where('kind', 'woman')->get();
         $productsMan = Product::Where('kind', 'man')->get();
+        $colors = ColorProduct::all();
+        $quantityInWarehouse = Quantity::all();
         return $this->render('shoeStore/product', [
             'productsKid' => $productsKid,
             'productsWoman' => $productsWoman,
-            'productsMan' => $productsMan
+            'productsMan' => $productsMan,
+            'colors' => $colors,
+            'quantityInWarehouse' => $quantityInWarehouse
         ]);
     }
 
@@ -40,17 +46,15 @@ class ProductController extends BaseController
     {
         if (auth()) {
             $productsInCart = Cart::Where('id_user', auth()->id)->get();
-            // $number = 0;
-            // foreach($productsInCart as $product)
-            // {
-            //     $number += $product->quantity;
-            // }
-            // session()->set('quantity', serialize($number));
+            $colors = ColorProduct::all();
+            $quantityInWarehouse = Quantity::all();
             ProductController::setQuantityForCart();
             return $this->render(
                 'shoeStore/cart',
                 [
                     'products' => $productsInCart,
+                    'colors' => $colors,
+                    'quantityInWarehouse' => $quantityInWarehouse
                 ]
             );
         } else {
@@ -66,6 +70,12 @@ class ProductController extends BaseController
             $id = $this->request->post('id');
             $product = Product::find($id);
             $size = $this->request->post('size');
+            $colors = ColorProduct::where('id_product', $id)->get();
+            $color = $this->request->post('color');
+            $quantity = $this->request->post('quantity');
+            if(!$color){
+                $color = $colors[0]->id_color;
+            }
             if(!$size) {
                 if ((string) $product->kind == 'kid') {
                     $size = 1;
@@ -74,7 +84,7 @@ class ProductController extends BaseController
                 } else
                     $size = 14;
             }
-            $exist = Cart::find((auth()->id * 10000) + ($product->id*100) +  $size);
+            $exist = Cart::find((auth()->id * 1000000) + ($product->id*10000) +  $size*100 + $color);
             if ($exist) {
                 $exist->quantity += 1;
                 if ($this->request->ajax()) {
@@ -96,12 +106,13 @@ class ProductController extends BaseController
                 }
             } else if (!$exist) {
                 $data = [
-                    'id' => (auth()->id * 10000) + ($product->id*100) +  $size,
+                    'id' => (auth()->id * 1000000) + ($product->id*10000) +  $size*100 + $color,
                     'id_product' => $product->id,
                     'id_user' => auth()->id,
                     'size' => $size,
-                    'color' => 1,
-                    'quantity' => 1,
+                    'color' => $color,
+                    'quantity' => $quantity,
+                    'quantity-left' => ($product->id*10000) +  $size*100 + $color,
                     'created_at' => '2022-05-11 08:36:57',
                     'updated_at' => null,
                     'deleted_at' => null
@@ -141,7 +152,7 @@ class ProductController extends BaseController
     {
         $id = $this->request->post('id');
         $cart = Cart::find($id);
-        $id = floor(($id - (auth()->id * 10000)) / 100);
+        $id = floor(($id - (auth()->id * 1000000)) / 10000);
         $productsInCart = Product::find($id);
 
         //Neu ajax request tra ve json
@@ -166,23 +177,53 @@ class ProductController extends BaseController
         return $this->redirect($return_url);
     }
 
-    // public function updateQuantity()
-    // {
-    //     $id = $this->request->post('update_quantity_id');
-    //     $quantity = $this->request->post('update_quantity');
-    //     $cart = Cart::find($id);
-    //     if ($cart) {
-    //         $cart->quantity = $quantity;
-    //         if ($cart->save()) {
-    //             session()->setFlash(\FLASH::SUCCESS, 'Quantity has been updated');
-    //         } else {
-    //             session()->setFlash(\FLASH::ERROR, 'Unable to update');
-    //         }
-    //     } else {
-    //         session()->setFlash(\FLASH::ERROR, 'ID was not exist');
-    //     }
-    //     return $this->redirect('/cart');
-    // }
+    public function updateCart()
+    {
+        $id = $this->request->post('id');
+        $color = $this->request->post('color');
+        $size = $this->request->post('size');
+        $quantity = $this->request->post('quantity');
+        $cart = Cart::find($id);
+        //$id_product_exist = (int)floor($id / 1000000) * 1000000 + ($cart->id_product * 10000) + $size * 100 + $color;
+        $id_product_exist = (int)(auth()->id * 1000000 + ($cart->id_product * 10000) + $size * 100 + $color);
+        $product_exist = Cart::find($id_product_exist);
+        if(!$product_exist)
+        {
+            $data = [
+                'id' => $id_product_exist,
+                'id_product' => $cart->id_product,
+                'id_user' => auth()->id,
+                'size' => $size,
+                'color' => $color,
+                'quantity' => $quantity,
+                'quantity-left' => (int)($cart->id_product * 10000) + $size * 100 + $color,
+                'created_at' => '2022-05-11 08:36:57',
+                'updated_at' => null,
+                'deleted_at' => null
+            ];
+            $newProduct = new Cart();
+            $newProduct->fill($data);
+            $newProduct->save();
+            $cart->delete();
+        } else {
+            $product_exist->quantity = $quantity;
+            $product_exist->save();
+            $cart->delete();
+        }
+        // if ($cart) {
+        //     $cart->quantity = $quantity;
+        //     $cart->color = $color;
+        //     $cart->size = $size;
+        //     $cart->quantity_left = (int)($id % 1000000);
+        //     if ($cart->save()) {
+        //         session()->setFlash(\FLASH::SUCCESS, 'Quantity has been updated');
+        //     } else {
+        //         session()->setFlash(\FLASH::ERROR, 'Unable to update');
+        //     }
+        // } else {
+        //     session()->setFlash(\FLASH::ERROR, 'ID was not exist');
+        // }
+    }
 
     public function updateQuantity()
     {

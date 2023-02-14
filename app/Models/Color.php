@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Quantity extends Model
+class Color extends Model
 {
 
     /**
@@ -13,7 +13,7 @@ class Quantity extends Model
      *
      * @var string
      */
-    protected $table = 'quantity';
+    protected $table = 'color';
 
     /**
      * Sử dụng các thuộc tính created_at và updated_at trong bảng
@@ -34,25 +34,11 @@ class Quantity extends Model
      */
     protected $fillable = [
         'id',
-        'id_product',
-        'size',
-        'color',
-        'quantity',
+        'name_color',
+        'rgba_string',
         'created_at',
         'updated_at',
         'deleted_at'
     ];
 
-    public function product(){
-        return $this->belongsTo(Product::class, 'id_product');
-    }
-
-    public function size(){
-        return $this->belongsTo(Size::class, 'size');
-    }
-
-    public function color(){
-        return $this->belongsTo(Color::class, 'color');
-    }
 }
-?>

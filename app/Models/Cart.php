@@ -43,6 +43,7 @@ class Cart extends Model
         'size',
         'color',
         'quantity',
+        'quantity-left',
         'created_at',
         'updated_at',
         'deleted_at'
@@ -54,5 +55,13 @@ class Cart extends Model
 
     public function sizes(){
         return $this->belongsTo(Size::class, 'size');
+    }
+
+    public function colors(){
+        return $this->belongsTo(Color::class, 'color');
+    }
+
+    public function quantityLeft(){
+        return $this->belongsTo(Quantity::class, 'quantity-left');
     }
 }

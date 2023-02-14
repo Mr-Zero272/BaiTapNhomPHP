@@ -1058,3 +1058,21 @@ img {
     left: 50%;
     transform: translateY(-50%, -50%);
 }
+
+.delete_product_btn{
+    color: #DC0000;
+    position: relative;
+    top: 50%;
+}
+
+.card_product_in_cart{
+    max-width: 940px; 
+    margin: auto; 
+    width: 50%;
+}
+
+@media screen and (max-width: 768px) {
+    .card_product_in_cart{
+        width: 100%;
+    }
+}
